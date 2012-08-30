@@ -13,14 +13,14 @@ public class Dices {
 
 	private Random random = new Random(7);
 
-	public Double valueDices() {
-		Double valueOneValid = verifyIfNumberIsValid(random.nextDouble());
-		Double valueTwoValid = verifyIfNumberIsValid(random.nextDouble());
+	public Integer valueDices() {
+		Integer valueOneValid = verifyIfNumberIsValid(random.nextInt());
+		Integer valueTwoValid = verifyIfNumberIsValid(random.nextInt());
 		return valueOneValid + valueTwoValid;
 	}
 
-	public Double verifyIfNumberIsValid(Double value) {
-		Double valueValid = 1.0;
+	public Integer verifyIfNumberIsValid(Integer value) {
+		Integer valueValid = 1;
 		if (value > 1 && value < 7) {
 			return value;
 		} else {

@@ -10,18 +10,18 @@ package tenpines.estanciero;
 public class Camp extends Property {
 
 	private Province province;
-	private Double incomeFixed;
-	private Double constructionCost;
-	private Integer countStay;
+	private Integer incomeFixed;
+	private Integer constructionCost;
+	private Integer amountStay;
 
 	/**
 	 * @param valor
 	 */
-	public Camp(Double valor, Double incomeFixed, Double constructionCost) {
+	public Camp(Integer valor, Integer incomeFixed, Integer constructionCost) {
 		super(valor);
 		this.setIncomeFixed(incomeFixed);
 		this.setConstructionCost(constructionCost);
-		this.setCountStay(0);
+		this.setAmountStay(0);
 	}
 
 	/**
@@ -36,14 +36,24 @@ public class Camp extends Property {
 	 * @see tenpines.estanciero.Property#rentaACobrar()
 	 */
 	@Override
-	public Double rentaACobrar(Owner player) {
-		return Math.pow(2, getCountStay()) * getIncomeFixed();
+	public Integer income(Player player) {
+		return calculateIncomeWithStays() * getIncomeFixed();
+	}
+
+	public Integer calculateIncomeWithStays() {
+		Integer powResoult = 1;
+		Integer amountStay = getAmountStay();
+		while (amountStay > 0) {
+			powResoult = powResoult * 2;
+			amountStay -= 1;
+		}
+		return powResoult;
 	}
 
 	public void buildEstancia() {
 		if (getProvince().validateIfIsValidBuildEstancia(this)) {
 			getOwner().subtractMoney(getConstructionCost());
-			countStay += 1;
+			amountStay += 1;
 		}
 	}
 
@@ -55,28 +65,28 @@ public class Camp extends Property {
 		this.province = province;
 	}
 
-	public Double getIncomeFixed() {
+	public Integer getIncomeFixed() {
 		return incomeFixed;
 	}
 
-	public void setIncomeFixed(Double incomeFixed) {
+	public void setIncomeFixed(Integer incomeFixed) {
 		this.incomeFixed = incomeFixed;
 	}
 
-	public Double getConstructionCost() {
+	public Integer getConstructionCost() {
 		return constructionCost;
 	}
 
-	public void setConstructionCost(Double constructionCost) {
+	public void setConstructionCost(Integer constructionCost) {
 		this.constructionCost = constructionCost;
 	}
 
-	public Integer getCountStay() {
-		return countStay;
+	public Integer getAmountStay() {
+		return amountStay;
 	}
 
-	public void setCountStay(Integer countStay) {
-		this.countStay = countStay;
+	public void setAmountStay(Integer countStay) {
+		this.amountStay = countStay;
 	}
 
 	/**

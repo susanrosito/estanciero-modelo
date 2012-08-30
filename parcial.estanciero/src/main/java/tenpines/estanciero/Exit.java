@@ -9,7 +9,7 @@ package tenpines.estanciero;
  */
 public class Exit extends Locker {
 
-	public Double credit = 5000.0;
+	public Integer credit = 5000;
 
 	/**
 	 * @see tenpines.estanciero.Locker#step(tenpines.estanciero.Player)

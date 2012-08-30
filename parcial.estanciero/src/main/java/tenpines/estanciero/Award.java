@@ -9,7 +9,7 @@ package tenpines.estanciero;
  */
 public class Award extends Locker {
 
-	private Double award = 2500.0;
+	private Integer award = 2500;
 
 	/**
 	 * @see tenpines.estanciero.Locker#step(tenpines.estanciero.Player)
@@ -23,11 +23,11 @@ public class Award extends Locker {
 		player.charge(award);
 	}
 
-	public Double getAward() {
+	public Integer getAward() {
 		return award;
 	}
 
-	public void setAward(Double award) {
+	public void setAward(Integer award) {
 		this.award = award;
 	}
 

@@ -17,7 +17,7 @@ public class Board {
 		this.lockers = lockers;
 	}
 
-	public ArrayList<Locker> casilleroDesdeHasta(Locker locker, Double distance) {
+	public ArrayList<Locker> casilleroDesdeHasta(Locker locker, Integer distance) {
 		ArrayList<Locker> road = new ArrayList<Locker>();
 		int indexOfLockerNext;
 		for (int i = lockers.indexOf(locker); i < lockers.size() && distance > 0; i++) {
