@@ -3,20 +3,14 @@
  */
 package tenpines.estanciero;
 
-import java.util.ArrayList;
-
 /**
  * 
  * @author Susana
  */
-public class Bank implements Owner {
+public class Bank extends Owner {
 
-	private ArrayList<Property> propertys;
-	private Double money;
-
-	public Bank(Double money) {
-		this.money = money;
-		this.propertys = new ArrayList<Property>();
+	public Bank(Integer money) {
+		super(money);
 	}
 
 	/**
@@ -29,7 +23,7 @@ public class Bank implements Owner {
 	/**
 	 * @see tenpines.estanciero.Owner#charge(java.lang.Double)
 	 */
-	public void charge(Double valueProperty) {
+	public void charge(Integer valueProperty) {
 		this.money += valueProperty;
 	}
 
@@ -46,19 +40,6 @@ public class Bank implements Owner {
 	}
 
 	/**
-	 * @see tenpines.estanciero.Owner#countCompanys()
-	 */
-	public Integer countCompanys() {
-		Integer cantEmpresas = 0;
-		for (Property property : this.getPropertys()) {
-			if (property.isCompany()) {
-				cantEmpresas++;
-			}
-		}
-		return cantEmpresas;
-	}
-
-	/**
 	 * @see tenpines.estanciero.Owner#isBank()
 	 */
 	public boolean isBank() {
@@ -66,33 +47,10 @@ public class Bank implements Owner {
 	}
 
 	/**
-	 * @see tenpines.estanciero.Owner#getNumberOfDice()
-	 */
-	public Double getNumberOfDice() {
-		return 1.0;
-	}
-
-	/**
 	 * @see tenpines.estanciero.Owner#substractMoney()
 	 */
-	public void subtractMoney(Double value) {
+	public void subtractMoney(Integer value) {
 		this.money -= value;
-	}
-
-	public ArrayList<Property> getPropertys() {
-		return propertys;
-	}
-
-	public void setPropertys(ArrayList<Property> propertys) {
-		this.propertys = propertys;
-	}
-
-	public Double getMoney() {
-		return money;
-	}
-
-	public void setMoney(Double money) {
-		this.money = money;
 	}
 
 }

@@ -22,9 +22,9 @@ public class TestPlayer {
 	@Test
 	public void WhenAPlayerBuyAPropertyWithYourDinnerMajorWhatThePriceOfPropertyShouldAddThePropertyAYourList() {
 		// set up falta hacer que el dueño de la property reciba e dinero
-		Player player = new Player(50000.0);
-		Player owner = new Player(60000.0);
-		Camp camp = new Camp(2000.0, 100.0, 500.0);
+		Player player = new Player(50000);
+		Player owner = new Player(60000);
+		Camp camp = new Camp(2000, 100, 500);
 		owner.addProperty(camp);
 
 		player.buyProperty(camp);
@@ -48,9 +48,9 @@ public class TestPlayer {
 
 	@Test
 	public void WhenAPlayerBuyAPropertyWithYourDinerLessWhatThePriceOfPropertyDontAddThePropertyAYourList() {
-		Player player = new Player(0.0);
-		Player owner = new Player(60000.0);
-		Camp camp = new Camp(2000.0, 100.0, 500.0);
+		Player player = new Player(0);
+		Player owner = new Player(60000);
+		Camp camp = new Camp(2000, 100, 500);
 		owner.addProperty(camp);
 		try {
 			player.buyProperty(camp);
@@ -73,9 +73,9 @@ public class TestPlayer {
 
 	@Test
 	public void WhenAPlayerBuyAPropertyAOtherPlayerShouldChangeOwnerOfPropertyForFirstPlayer() {
-		Player player = new Player(50000.0);
-		Player owner = new Player(60000.0);
-		Camp camp = new Camp(2000.0, 100.0, 500.0);
+		Player player = new Player(50000);
+		Player owner = new Player(60000);
+		Camp camp = new Camp(2000, 100, 500);
 		owner.addProperty(camp);
 
 		player.buyProperty(camp);
@@ -90,9 +90,9 @@ public class TestPlayer {
 
 	@Test
 	public void IfBuyOneCompanyShouldAddThePropertyATheListAndChangeOfOwner() {
-		Player player = new Player(50000.0);
-		Player owner = new Player(60000.0);
-		Company empresa = new Company(2000.0);
+		Player player = new Player(50000);
+		Player owner = new Player(60000);
+		Company empresa = new Company(2000);
 		owner.addProperty(empresa);
 
 		player.buyProperty(empresa);
@@ -112,12 +112,12 @@ public class TestPlayer {
 
 	@Test
 	public void IfLikeKnowTheIncomeOfPropertyCampWithOutStayShouldDoSame() {
-		Player player = new Player(50000.0);
-		Camp camp = new Camp(2000.0, 100.0, 500.0);
+		Player player = new Player(5000);
+		Camp camp = new Camp(2000, 100, 500);
 
-		Double income = player.incomeToPay(camp);
+		Integer income = player.incomeToPay(camp);
 
-		Assert.assertEquals((Integer) 0, camp.getCountStay());
+		Assert.assertEquals((Integer) 0, camp.getAmountStay());
 
 		// pregunto si la renta es correcta de acuerdo al valor de la property
 		Assert.assertEquals((Double) 100.0, income);
@@ -125,14 +125,14 @@ public class TestPlayer {
 
 	@Test
 	public void IfLikeKnowTheIncomeOfPropertyCampWithStayShouldDoNotSame() {
-		Player player = new Player(50000.0);
-		Camp camp = new Camp(2000.0, 150.0, 400.0);
-		camp.setCountStay(2);
-		Double income = camp.getIncomeFixed();
+		Player player = new Player(50000);
+		Camp camp = new Camp(2000, 150, 400);
+		camp.setAmountStay(2);
+		Integer income = camp.getIncomeFixed();
 
-		Double incomeReal = player.incomeToPay(camp);
+		Integer incomeReal = player.incomeToPay(camp);
 
-		Assert.assertEquals((Integer) 2, camp.getCountStay());
+		Assert.assertEquals((Integer) 2, camp.getAmountStay());
 
 		// pregunto si la renta es correcta de acuerdo al valor de la property
 		Assert.assertEquals((Double) 600.0, incomeReal);
@@ -143,13 +143,13 @@ public class TestPlayer {
 
 	@Test
 	public void IfLikeKnowTheIncomeOfPropertyCampCrazyWithStayShouldDoAreMajorWhatValueInit() {
-		Player player = new Player(50000.0);
-		CampCrazy camp = new CampCrazy(2000.0, 100.0, 500.0);
-		camp.setCountStay(2);
-		Double income = camp.getIncomeFixed();
-		Double incomeReal = player.incomeToPay(camp);
+		Player player = new Player(50000);
+		CampCrazy camp = new CampCrazy(2000, 100, 500);
+		camp.setAmountStay(2);
+		Integer income = camp.getIncomeFixed();
+		Integer incomeReal = player.incomeToPay(camp);
 
-		Assert.assertEquals((Integer) 2, camp.getCountStay());
+		Assert.assertEquals((Integer) 2, camp.getAmountStay());
 
 		// pregunto si la renta es correcta de acuerdo al valor de la property
 		Assert.assertEquals((Double) 480.0, incomeReal);
@@ -159,13 +159,13 @@ public class TestPlayer {
 
 	@Test
 	public void IfLikeKnowTheIncomeOfPropertyCampCrazyWithOutStayShouldDoAreMajorWhatValueInit() {
-		Player player = new Player(50000.0);
-		CampCrazy camp = new CampCrazy(2000.0, 150.0, 400.0);
-		Double income = camp.getIncomeFixed();
+		Player player = new Player(50000);
+		CampCrazy camp = new CampCrazy(2000, 150, 400);
+		Integer income = camp.getIncomeFixed();
 
-		Double incomeReal = player.incomeToPay(camp);
+		Integer incomeReal = player.incomeToPay(camp);
 
-		Assert.assertEquals((Integer) 0, camp.getCountStay());
+		Assert.assertEquals((Integer) 0, camp.getAmountStay());
 
 		// pregunto si la renta es correcta de acuerdo al valor de la property
 		Assert.assertEquals((Double) 180.0, incomeReal);
@@ -176,11 +176,11 @@ public class TestPlayer {
 
 	@Test
 	public void ifAPlayerCayOfOneLockerItHaveAPropertyShouldPayOfIncome() {
-		Player player = new Player(120000.0);
+		Player player = new Player(120000);
 		player.pullDice();
-		Player owner = new Player(60000.0);
+		Player owner = new Player(60000);
 		player.pullDice();
-		Company company = new Company(2000.0);
+		Company company = new Company(2000);
 		owner.addProperty(company);
 		PropertyLocker locker = new PropertyLocker(company);
 
@@ -194,7 +194,7 @@ public class TestPlayer {
 
 	@Test
 	public void ifAPlayerCayOfOneLockerItHaveAAwardShouldChangeToAward() {
-		Player player = new Player(50000.0);
+		Player player = new Player(50000);
 		player.pullDice();
 		Award locker = new Award();
 
@@ -206,7 +206,7 @@ public class TestPlayer {
 
 	@Test
 	public void ifAPlayerStepOfOneLockerItAreExitShouldChangeToBonus() {
-		Player player = new Player(50000.0);
+		Player player = new Player(50000);
 		player.pullDice();
 		Exit locker = new Exit();
 
@@ -218,10 +218,10 @@ public class TestPlayer {
 
 	@Test
 	public void ifAPlayerCayInLockerWithPropertyOfBankShouldBuyIt() {
-		Player player = new Player(50000.0);
+		Player player = new Player(50000);
 		player.pullDice();
-		Bank owner = new Bank(40000.0);
-		Camp camp = new Camp(3000.0, 300.0, 150.0);
+		Bank owner = new Bank(40000);
+		Camp camp = new Camp(3000, 300, 150);
 		owner.addProperty(camp);
 
 		PropertyLocker propertyLocker = new PropertyLocker(camp);
@@ -245,10 +245,10 @@ public class TestPlayer {
 	@Test
 	public void IfAPlayerPullDiceShouldMoveToBoardThatNumberOfGetAndChangeYourPosition() {
 		ArrayList<Locker> lockers = new ArrayList<Locker>();
-		Bank bank = new Bank(500000.0);
-		Camp camp = new Camp(2000.0, 200.0, 100.0);
-		Camp campCrazy = new CampCrazy(2000.0, 200.0, 100.0);
-		Company company = new Company(3000.0);
+		Bank bank = new Bank(500000);
+		Camp camp = new Camp(2000, 200, 100);
+		Camp campCrazy = new CampCrazy(2000, 200, 100);
+		Company company = new Company(3000);
 		bank.addProperty(camp);
 		bank.addProperty(company);
 		bank.addProperty(campCrazy);
@@ -259,8 +259,8 @@ public class TestPlayer {
 		lockers.add(new Award());
 		lockers.add(new PropertyLocker(company));
 
-		Player player = new Player(30000.0);
-		player.setNumberOfDice(2.0);
+		Player player = new Player(30000);
+		player.setNumberOfDice(2);
 
 		player.moveTo(lockers);
 

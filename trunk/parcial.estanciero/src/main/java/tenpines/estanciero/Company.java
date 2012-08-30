@@ -12,7 +12,7 @@ public class Company extends Property {
 	/**
 	 * Constructor
 	 */
-	public Company(Double valor) {
+	public Company(Integer valor) {
 		super(valor);
 	}
 
@@ -28,8 +28,8 @@ public class Company extends Property {
 	 * @see tenpines.estanciero.Property#rentaACobrar()
 	 */
 	@Override
-	public Double rentaACobrar(Owner player) {
-		return player.getNumberOfDice() * 30000 * this.getOwner().countCompanys().doubleValue();
+	public Integer income(Player player) {
+		return player.getNumberOfDice() * 30000 * this.getOwner().countCompanys();
 	}
 
 	/**

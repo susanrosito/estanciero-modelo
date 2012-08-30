@@ -9,16 +9,16 @@ package tenpines.estanciero;
  */
 public abstract class Property {
 
-	private Double value;
+	private Integer value;
 	private Owner owner;
 
-	public Property(Double valor) {
+	public Property(Integer valor) {
 		this.setValue(valor);
 	}
 
 	abstract public boolean isCompany();
 
-	abstract public Double rentaACobrar(Owner player);
+	abstract public Integer income(Player player);
 
 	abstract public void step(Owner player);
 
@@ -26,11 +26,11 @@ public abstract class Property {
 		this.setOwner(player);
 	}
 
-	public Double getValue() {
+	public Integer getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
+	public void setValue(Integer value) {
 		this.value = value;
 	}
 

@@ -1,21 +1,87 @@
 package tenpines.estanciero;
 
-public interface Owner {
+import java.util.ArrayList;
+import java.util.Collection;
 
-	public void charge(Double valueProperty);
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
-	public void subtractProperty(Property property);
+abstract public class Owner {
 
-	public Integer countCompanys();
+	protected ArrayList<Property> propertys = new ArrayList<Property>();
+	protected Integer money;
 
-	public boolean isBank();
+	/**
+	 * 
+	 */
+	public Owner(Integer money) {
+		this.money = money;
+	}
 
-	public Double getNumberOfDice();
+	public void charge(Integer income) {
 
-	public void cayPlayer(Player player, Property property);
+	}
 
-	public void subtractMoney(Double money);
+	public void subtractProperty(Property property) {
 
-	public void addProperty(Property property);
+	}
+
+	/**
+	 * contar las cantidad de empresas que tiene un jugador
+	 */
+	public Integer countCompanys() {
+		@SuppressWarnings("unchecked")
+		Collection<Property> selected = CollectionUtils.select(propertys, this.isCompanyPredicate());
+		return selected.size();
+	}
+
+	/**
+	 * @return
+	 */
+	private Predicate isCompanyPredicate() {
+		return new Predicate() {
+			public boolean evaluate(Object object) {
+				Property aProperty = (Property) object;
+				return aProperty.isCompany();
+			}
+		};
+
+	}
+
+	public boolean isBank() {
+		return false;
+	}
+
+	public Integer getNumberOfDice() {
+		return 1;
+	}
+
+	public void cayPlayer(Player player, Property property) {
+
+	}
+
+	public void subtractMoney(Integer money) {
+
+	}
+
+	public void addProperty(Property property) {
+
+	}
+
+	public ArrayList<Property> getPropertys() {
+		return propertys;
+	}
+
+	public void setPropertys(ArrayList<Property> propertys) {
+		this.propertys = propertys;
+	}
+
+	public Integer getMoney() {
+		return money;
+	}
+
+	public void setMoney(Integer money) {
+		this.money = money;
+	}
 
 }

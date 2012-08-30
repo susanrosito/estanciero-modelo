@@ -10,7 +10,7 @@ package tenpines.estanciero;
  */
 public class CampCrazy extends Camp {
 
-	private Double chargeBonus = 500.0;
+	private Integer chargeBonus = 500;
 
 	/**
 	 * @param valor
@@ -18,7 +18,7 @@ public class CampCrazy extends Camp {
 	 * @param incomeFixed
 	 * @param constructionCost
 	 */
-	public CampCrazy(Double valor, Double incomeFixed, Double constructionCost) {
+	public CampCrazy(Integer valor, Integer incomeFixed, Integer constructionCost) {
 		super(valor, incomeFixed, constructionCost);
 		addPorcengeCrazy();
 	}
@@ -27,7 +27,7 @@ public class CampCrazy extends Camp {
 
 	public void addPorcengeCrazy() {
 		Double porcengeOfValue = getIncomeFixed() * 0.2;
-		this.setIncomeFixed(getIncomeFixed() + porcengeOfValue);
+		this.setIncomeFixed(getIncomeFixed() + porcengeOfValue.intValue());
 	}
 
 	public Double getCrazyPorcenge() {
@@ -46,11 +46,11 @@ public class CampCrazy extends Camp {
 		}
 	}
 
-	public Double getChargeBonus() {
+	public Integer getChargeBonus() {
 		return chargeBonus;
 	}
 
-	public void setChargeBonus(Double chargeBonus) {
+	public void setChargeBonus(Integer chargeBonus) {
 		this.chargeBonus = chargeBonus;
 	}
 }
