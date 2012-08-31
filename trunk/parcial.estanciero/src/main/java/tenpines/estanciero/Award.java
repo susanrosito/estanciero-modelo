@@ -9,6 +9,13 @@ package tenpines.estanciero;
  */
 public class Award extends Locker {
 
+	/**
+	 * @param bank
+	 */
+	public Award(Bank bank) {
+		super(bank);
+	}
+
 	private Integer award = 2500;
 
 	/**
@@ -20,7 +27,7 @@ public class Award extends Locker {
 
 	@Override
 	public void cay(Player player) {
-		player.charge(award);
+		bank.amountPaidToCreditor(award, player);
 	}
 
 	public Integer getAward() {

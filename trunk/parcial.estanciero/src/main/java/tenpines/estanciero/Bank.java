@@ -23,13 +23,21 @@ public class Bank extends Owner {
 	/**
 	 * @see tenpines.estanciero.Owner#charge(java.lang.Double)
 	 */
-	public void charge(Integer valueProperty) {
+	public void amountReceivable(Integer valueProperty) {
 		this.money += valueProperty;
 	}
 
 	public void addProperty(Property property) {
 		property.changeOwner(this);
 		this.propertys.add(property);
+	}
+
+	public void amountPayable(Integer value) {
+
+	}
+
+	public void amountPaidToCreditor(Integer value, Player player) {
+
 	}
 
 	/**

@@ -9,6 +9,15 @@ package tenpines.estanciero;
  */
 public abstract class Locker {
 
+	protected Bank bank;
+
+	/**
+	 * constructor recibe como parametro el banco
+	 */
+	public Locker(Bank bank) {
+		this.bank = bank;
+	}
+
 	abstract public void step(Player player);
 
 	abstract public void cay(Player player);

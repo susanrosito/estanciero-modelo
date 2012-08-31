@@ -9,6 +9,13 @@ package tenpines.estanciero;
  */
 public class Exit extends Locker {
 
+	/**
+	 * @param bank
+	 */
+	public Exit(Bank bank) {
+		super(bank);
+	}
+
 	public Integer credit = 5000;
 
 	/**
@@ -16,7 +23,7 @@ public class Exit extends Locker {
 	 */
 	@Override
 	public void step(Player player) {
-		player.charge(credit);
+		bank.amountPaidToCreditor(credit, player);
 	}
 
 	@Override

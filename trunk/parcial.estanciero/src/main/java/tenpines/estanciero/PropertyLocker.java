@@ -11,7 +11,8 @@ public class PropertyLocker extends Locker {
 
 	private Property property;
 
-	public PropertyLocker(Property property) {
+	public PropertyLocker(Bank bank, Property property) {
+		super(bank);
 		this.property = property;
 	}
 

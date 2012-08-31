@@ -1,7 +1,7 @@
 /**
  * 29/08/2012 16:50:45 Copyright (C) 2011 10Pines S.R.L.
  */
-package tenpines.estanciero;
+package exampleBuilder;
 
 /**
  * 
@@ -16,7 +16,7 @@ public class BuilderExample {
 		PizzaBuilder hawaiianPizzaBuilder = new HawaiianPizzaBuilder();
 		PizzaBuilder spicyPizzaBuilder = new SpicyPizzaBuilder();
 
-		cook.setPizzaBuilder(hawaiianPizzaBuilder);
+		cook.setPizzaBuilder(spicyPizzaBuilder);
 		cook.constructPizza();
 
 		Pizza pizza = cook.getPizza();
