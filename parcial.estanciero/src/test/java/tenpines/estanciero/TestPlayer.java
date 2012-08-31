@@ -182,7 +182,8 @@ public class TestPlayer {
 		player.pullDice();
 		Company company = new Company(2000);
 		owner.addProperty(company);
-		PropertyLocker locker = new PropertyLocker(company);
+		Bank bank = new Bank(50000);
+		PropertyLocker locker = new PropertyLocker(bank, company);
 
 		locker.cay(player);
 
@@ -196,7 +197,8 @@ public class TestPlayer {
 	public void ifAPlayerCayOfOneLockerItHaveAAwardShouldChangeToAward() {
 		Player player = new Player(50000);
 		player.pullDice();
-		Award locker = new Award();
+		Bank bank = new Bank(50000);
+		Award locker = new Award(bank);
 
 		locker.cay(player);
 
@@ -208,7 +210,8 @@ public class TestPlayer {
 	public void ifAPlayerStepOfOneLockerItAreExitShouldChangeToBonus() {
 		Player player = new Player(50000);
 		player.pullDice();
-		Exit locker = new Exit();
+		Bank bank = new Bank(50000);
+		Exit locker = new Exit(bank);
 
 		locker.step(player);
 
@@ -223,8 +226,8 @@ public class TestPlayer {
 		Bank owner = new Bank(40000);
 		Camp camp = new Camp(3000, 300, 150);
 		owner.addProperty(camp);
-
-		PropertyLocker propertyLocker = new PropertyLocker(camp);
+		Bank bank = new Bank(50000);
+		PropertyLocker propertyLocker = new PropertyLocker(bank, camp);
 
 		propertyLocker.cay(player);
 
@@ -253,11 +256,11 @@ public class TestPlayer {
 		bank.addProperty(company);
 		bank.addProperty(campCrazy);
 
-		lockers.add(new Exit());
-		lockers.add(new PropertyLocker(camp));
-		lockers.add(new PropertyLocker(campCrazy));
-		lockers.add(new Award());
-		lockers.add(new PropertyLocker(company));
+		lockers.add(new Exit(bank));
+		lockers.add(new PropertyLocker(bank, camp));
+		lockers.add(new PropertyLocker(bank, campCrazy));
+		lockers.add(new Award(bank));
+		lockers.add(new PropertyLocker(bank, company));
 
 		Player player = new Player(30000);
 		player.setNumberOfDice(2);

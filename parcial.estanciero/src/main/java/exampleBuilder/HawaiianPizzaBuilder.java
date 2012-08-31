@@ -1,7 +1,7 @@
 /**
  * 29/08/2012 16:48:25 Copyright (C) 2011 10Pines S.R.L.
  */
-package tenpines.estanciero;
+package exampleBuilder;
 
 /**
  * 

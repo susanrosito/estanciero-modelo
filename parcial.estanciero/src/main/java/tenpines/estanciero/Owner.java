@@ -26,6 +26,10 @@ abstract public class Owner {
 
 	}
 
+	public void amountPaidToCreditor(Integer value, Player player) {
+
+	}
+
 	/**
 	 * contar las cantidad de empresas que tiene un jugador
 	 */
